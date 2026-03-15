@@ -25,7 +25,7 @@ bool LinearProbingTable::insert(int key) {
 bool LinearProbingTable::search(int key, int &probeCount) const {
   int index = hash_fn(key);
   probeCount = 0;
-  int count = 0;
+  size_t count = 0;
 
   while(table[index].occupied && count < capacity) {
     probeCount++;
@@ -44,7 +44,7 @@ bool LinearProbingTable::search(int key, int &probeCount) const {
 
 bool LinearProbingTable::remove(int key) {
   int index = hash_fn(key);
-  int count = 0;
+  size_t count = 0;
 
   // finding the key
   while (table[index].occupied && count < capacity) {

@@ -32,8 +32,8 @@ bool RobinHoodTable::insert(int key) {
 bool RobinHoodTable::search(int key, int &probeCount) const {
   int index = hash_fn(key);
   probeCount = 0;
-  int distance = 0; // Tracks how far we've searched from the target's home
-  int count = 0;
+  size_t distance = 0; // Tracks how far we've searched from the target's home
+  size_t count = 0;
 
   while (table[index].occupied && count < capacity) {
     probeCount++;
@@ -91,6 +91,7 @@ bool RobinHoodTable::remove(int key) {
     i = j;                       // move one step forward and repeat
     j = (j + 1) % capacity;
   }
+  
 
   return true;
 }
